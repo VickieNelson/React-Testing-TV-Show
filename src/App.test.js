@@ -17,6 +17,7 @@ jest.mock("./api/fetchShow");
 //which method ??
 
 test("App fetches show data and renders it", async () => {
+  //create mock var object
   const mockData = {
     id: "123",
     image: { medium: "medium_image" },
@@ -26,7 +27,9 @@ test("App fetches show data and renders it", async () => {
     summary: "<p>Summary</p>",
     runtime: 20,
   };
+  //fetch resolved mock data
   mockFetchShow.mockResolvedValueOnce(mockData);
+
   const { queryAllByText } = render(<App />);
   // now wait
   await waitFor(() => expect(queryAllByText(/name/i)).toHaveLength(1));

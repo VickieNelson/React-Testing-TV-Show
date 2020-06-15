@@ -23,7 +23,10 @@ test("Renders Episodes without props, and again with props", () => {
     runtime: 20,
   };
   const { queryAllByText, rerender } = render(<Episodes episodes={[]} />);
+  //get all by season
   expect(queryAllByText(/season/i) === null);
+  //rerender
   rerender(<Episodes episodes={[mockData]} />);
+  //get all name
   expect(queryAllByText(/name/i)).toHaveLength(1);
 });
